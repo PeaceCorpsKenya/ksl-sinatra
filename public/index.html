@@ -14,9 +14,10 @@
     <div class="row">
       <div class="large-12 columns">
         <div class="nav-bar right">
+          <div id='search-bar'>
+          </div>
           <ul class="button-group">
-            <li><a href="#" class="button">Link 1</a></li>
-            <li><a href="#" class="button">Link 2</a></li>
+            <li><a href="#" class="button">Search</a></li>
           </ul>
         </div>
         <h1>KSL <small>Kenyan Sign Language</small></h1>
@@ -29,7 +30,6 @@
     <div class="row">
       <!-- Main Blog Content -->
       <div class="large-9 columns" id='articles' role="content">
-
       </div>
       <!-- End Main Content -->
 
@@ -74,22 +74,28 @@
     </footer>
 
 
+    <script type='text/x-handlebars-template' id='search-template'>
+      <form>
+        <input type='text' name='search' value="{{query}}" placeholder="Search"/>
+      </form>
+    </script>
+
     <script type='text/x-handlebars-template' id='sign-template'>
         <article>
         <h3>{{name}}</h3>
 
         <div class="row">
-          <div class="large-6 columns">
+          <div class="">
             {{#each definition}}
             <h4>{{language}}</h4>
             <p>{{definition}}</p>
             {{/each}}
           </div>
 
-          <div class="large-6 columns">
-	    <div class="flex-video">
+          <div class="">
+            <div class="flex-video">
               <iframe class="thumbnail-video" src="{{videourl}}" frameborder="0" allowfullscreen></iframe>
-	    </div>
+            </div>
           </div>
 
           <div class='keywords'>
@@ -103,7 +109,7 @@
     </script>
 
     <script type='text/x-handlebars-template' id='category-tag'>
-      <li><a href="#" data-name="{{name}}">{{name}}</a></li>
+      <li><a href="#" class='browse-category' data-name="{{name}}">{{name}}</a></li>
     </script>
 
 
