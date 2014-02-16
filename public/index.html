@@ -5,125 +5,130 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>KSL | Kenyan Sign Language | Peace Corps</title>
-    <link rel="stylesheet" href="css/foundation.css" />
     <script src="js/vendor/modernizr.js"></script>
+
+    <link rel="stylesheet" href="css/foundation.css">
+    <link rel="stylesheet" href="css/KSL.css">
   </head>
 
   <body>
-    <!-- Nav Bar -->
-    <div class="row">
-      <div class="large-12 columns">
-        <div class="nav-bar right">
-          <div id='search-bar'>
-          </div>
-          <ul class="button-group">
-            <li><a href="#" class="button">Search</a></li>
-          </ul>
-        </div>
-        <h1>KSL <small>Kenyan Sign Language</small></h1>
-        <hr />
+    <div class = "navbar-alignment">
+      <!-- Nav Bar -->
+      <div class="logo">
+	<img src="img/KSL_logo.jpg" alt="Peace Corps KSL Glossary"> <!-- KSL Logo-->
+      </div>
+
+      <div class="top-navbar row"> <!-- main nav bar going across, to include subsection of brown with white padding-->
+	<div class="top-navthin">
+	  <!-- BUTTON BE GONE!    <a href='#' class='red-button'>Browse</a> -->
+          <form class="form-wrapper cf">
+            <input type="text" placeholder="Search here..." required>
+            <button type="submit">Search</button>
+          </form>   
+	</div>  
       </div>
     </div>
 
     <!-- End Nav -->
-    <!-- Main Page Content and Sidebar -->
-    <div class="row">
-      <!-- Main Blog Content -->
-      <div class="large-9 columns" id='articles' role="content">
-      </div>
-      <!-- End Main Content -->
 
+
+    <!-- Main Page Content and Sidebar -->
+    <div class="row" style="clear: both">
       <!-- Sidebar -->
       <aside class="large-3 columns">
-
-      <h5>Categories</h5>
-      <ul class="side-nav" id='category-tags'>
-      </ul>
-
-      <div class="panel">
-        <h5>Featured</h5>
-        <p>Pork drumstick turkey fugiat. Tri-tip elit turducken pork chop in. Swine short ribs meatball irure bacon nulla pork belly cupidatat meatloaf cow.</p>
-        <a href="#">Read More →</a>
-      </div>
-
+	<div class="alpha">
+	  <p>
+            Categories:<br>
+            <a href="#"><img src="img/bio.png">  Biology   </a><br>
+            <a href="#"><img src="img/chem.png">  Chemistry   </a> <br>
+            <!--a href="#"><img src="img/HIV.png"> HIV/Aids</a> <br-->
+            <a href="#"><img src="img/house.png"> Household items</a> <br>
+            <a href="#"><img src="img/math.png"> Mathematics</a> <br>
+            <a href="#"><img src="img/physics.png"> Physics</a><br>
+	  </p>
+	</div>
       </aside>
-
       <!-- End Sidebar -->
     </div>
-    <!-- End Main Content and Sidebar -->
 
-
-    <!-- Footer -->
-    <footer class="row">
-    <div class="large-12 columns">
-      <hr />
-      <div class="row">
-        <div class="large-6 columns">
-          <p>© Copyright no one at all. Go to town.</p>
-        </div>
-        <div class="large-6 columns">
-          <ul class="inline-list right">
-            <li><a href="#">Link 1</a></li>
-            <li><a href="#">Link 2</a></li>
-            <li><a href="#">Link 3</a></li>
-            <li><a href="#">Link 4</a></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-    </footer>
-
-
-    <script type='text/x-handlebars-template' id='search-template'>
-      <form>
-        <input type='text' name='search' value="{{query}}" placeholder="Search"/>
-      </form>
-    </script>
-
-    <script type='text/x-handlebars-template' id='sign-template'>
-        <article>
-        <h3>{{name}}</h3>
-
+    <!-- Main Blog Content -->
+    <div class="large-9 columns" role="content">
+      <article>
+        <h3>A</h3>
         <div class="row">
-          <div class="">
-            {{#each definition}}
-            <h4>{{language}}</h4>
-            <p>{{definition}}</p>
-            {{/each}}
-          </div>
-
-          <div class="">
-            <div class="flex-video">
-              <iframe class="thumbnail-video" src="{{videourl}}" frameborder="0" allowfullscreen></iframe>
+          <div class="wrapper" "wiz">
+            <div class = "body-color">
+              <ul id="articles">
+              </ul>
             </div>
           </div>
-
-          <div class='keywords'>
-            {{#each keyword}}
-            <span class='keyword'>{{keyword}}</span>
-            {{/each}}
-          </div>
-
         </div>
+      </article>
+
+      <!-- End Main Content -->
+      
+      <hr />
+
+      <!-- End Main Content and Sidebar -->
+      <!-- Footer -->
+      <footer class="footer">
+	<p> Why sleep when opportunity beckons? </p>
+      </footer>
+      
+      <script type='text/x-handlebars-template' id='search-template'>
+	<form>
+          <input type='text' name='search' value="{{query}}" placeholder="Search"/>
+	</form>
+      </script>
+
+      <script type='text/x-handlebars-template' id='sign-minimal-template'>
+	<li><a href={{url}}>{{name}}</a></li>
+      </script>
+      
+      <script type='text/x-handlebars-template' id='sign-template'>
+        <article>
+          <h3>{{name}}</h3>
+	  
+          <div class="row">
+            <div class="">
+              {{#each definition}}
+              <h4>{{language}}</h4>
+              <p>{{definition}}</p>
+            {{/each}}
+            </div>
+	    
+            <div class="">
+              <div class="flex-video">
+		<iframe class="thumbnail-video" src="{{videourl}}" frameborder="0" allowfullscreen></iframe>
+              </div>
+            </div>
+	    
+            <div class='keywords'>
+              {{#each keyword}}
+              <span class='keyword'>{{keyword}}</span>
+              {{/each}}
+            </div>
+	    
+          </div>
         </article>
-    </script>
-
-    <script type='text/x-handlebars-template' id='category-tag'>
-      <li><a href="#" class='browse-category' data-name="{{name}}">{{name}}</a></li>
-    </script>
-
-
-    <script src="js/vendor/jquery.js"></script>
-    <script src="js/foundation.min.js"></script>
-    <script>
-      $(document).foundation();
-    </script>
-
-    <script src="js/handlebars.js"></script>
-    <script src="js/underscore-min.js"></script>
-    <script src="js/backbone.js"></script>
-    <script type="text/javascript" src="js/backbone.localStorage.js"></script>
-    <script src="js/ksl-backbone.js"></script>
-
+      </script>
+      
+      <script type='text/x-handlebars-template' id='category-tag'>
+	<li><a href="#" class='browse-category' data-name="{{name}}">{{name}}</a></li>
+      </script>
+      
+      
+      <script src="js/vendor/jquery.js"></script>
+      <script src="js/foundation.min.js"></script>
+      <script>
+	$(document).foundation();
+      </script>
+      
+      <script src="js/handlebars.js"></script>
+      <script src="js/underscore-min.js"></script>
+      <script src="js/backbone.js"></script>
+      <script type="text/javascript" src="js/backbone.localStorage.js"></script>
+      <script src="js/ksl-backbone.js"></script>
+      
   </body>
 </html>
