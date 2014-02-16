@@ -37,11 +37,15 @@ $(function() {
 
     search:    function(query) {
       if(query) {
-        var re = new RegExp(query + "*");
+        var re = new RegExp("^" + query);
         var signs = _.select(this.models, function(sign) {
           return _.any(sign.get('categories'), function(category) {
             return re.test(category.name);
           });
+        });
+        // deep copy
+        var signs = _.map(signs, function(sign) {
+          return (sign.attributes);
         });
         return signs;
       } else {
@@ -76,7 +80,6 @@ $(function() {
 
   KSL.view.articles = Backbone.View.extend({
     initialize: function() {
-                  this.listenTo(this.collection, 'set', this.render);
                 },
 
     render:   function() {
@@ -88,7 +91,7 @@ $(function() {
                   var article = new KSL.view.article({
                     el: $el,
                     model: sign
-                  })
+                  });
                   article.render();
                   articles.$el.append(article.$el);
                 });
@@ -144,7 +147,8 @@ $(function() {
     search:     function(evt) {
                   evt.preventDefault();
                   this.query = this.$el.find("[name='search']").val();
-                  var signs = new Backbone.Collection({});
+                  Backbone.history.navigate("/search/"+this.query);
+                  var signs = new KSL.model.signs();
                   signs.add(this.collection.search(this.query));
                   var articles = new KSL.view.articles({
                     collection: signs,
@@ -167,7 +171,7 @@ $(function() {
     },
 
     category: function(name) {
-      Backbone.history.navigate("/category"+name);
+      Backbone.history.navigate("/category/"+name);
 
       var signs = new KSL.model.signs(_.select(app.signs.models, function(s) {
         return _.contains(_.map(s.get('categories'), function(m) { return m.name; }), name);
@@ -196,6 +200,7 @@ $(function() {
     el: $("#articles")
   });
   app.articles.render();
+  app.articles.listenToOnce(app.articles.collection, 'set', app.articles.render);
 
   app.categoryTags = new KSL.view.categoryTags({
     el: $("#category-tags"),
