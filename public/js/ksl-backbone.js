@@ -167,7 +167,8 @@ $(function() {
   KSL.workspace = Backbone.Router.extend({
     routes: {
       "help":                 "help",      // #help
-      "category/:name":      "category"    // all in a category
+      "category/:name":      "category",    // all in a category
+      "search/:name":        "search"
     },
 
     category: function(name) {
@@ -183,6 +184,11 @@ $(function() {
       });
 
       articles.render();
+    },
+
+    search: function(name) {
+      $("#search-bar input[name='search']").val(name);
+      $("#search-bar input[type='submit']").click();
     }
   });
 });
