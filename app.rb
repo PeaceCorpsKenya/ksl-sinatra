@@ -12,6 +12,15 @@ get '/' do
   send_file page
 end
 
+get "/signs.json" do
+  limit = params[:limit] || 10
+  offset = params[:offset] || 0
+  signs = Sign.all(:limit => limit, :offset => offset, :include => [:categories])
+
+  content_type :json
+  signs.to_json(:include => [:categories])
+end
+
 get "/spacer.gif" do
   send_file File.join(settings.public_folder, "spacer.gif")
 end

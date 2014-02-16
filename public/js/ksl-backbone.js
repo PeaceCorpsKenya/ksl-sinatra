@@ -4,10 +4,17 @@ $(function() {
     view:  {}
   };
 
+  Backbone.sync = function Sync() {
+    Backbone.ajaxSync.apply(this, arguments);
+    return Backbone.localSync.apply(this, arguments);
+  };
+
   // Models
-  KSL.model.sign = Backbone.Model.extend({
+  var sign = Backbone.Model.extend({
     initialize: function() {
                 },
+
+    localStorage: new Backbone.LocalStorage("sign"),
 
     letter:     function() {
                   var name = this.get('name');
@@ -18,46 +25,32 @@ $(function() {
                   }
                 }
   });
+  KSL.model.sign = sign;
 
-  KSL.model.signs = Backbone.Collection.extend({
-    url:      "/signs",
-    model:    KSL.sign,
+  var signs = Backbone.Collection.extend({
+    model:    sign,
+    url:      "/signs.json",
 
-    initialize: function() {
-                  this.on('sync', this.setLocalStorage);
-                  this.on('fetch', this.setLocalStorage);
-                },
+    collection: {localStorage: new Backbone.LocalStorage("signs")},
 
-    setLocalStorage: function() {
-                       localStorage.setItem('signs', this.toJSON());
-                     },
+    bootstrap: function() {
+                 var signs = this;
+                 signs.fetch();
 
-
-    sync:       function (method, model, options) {
-                  var localCopy = (window.localStorage && window.localStorage.getItem('signs'));
-
-                  var networkAvailable;
-                  try {
-                    $.get("/");
-                    networkAvailable = true;
-                  } catch (error) {
-                    networkAvailable = false;
-                  }
-
-
-                  // FIXME: Add additional sync behavior for update, delete, create
-                  if((method === 'read') && localCopy) {
-                    // TODO FIXME
-                    console.error("to implement");
-                  } else if(networkAvailable) {
-                    Backbone.sync.call(method, model, options);
-                  }
-                }
-
+                 $.get(this.url, function(attr) {
+                   var models = _.map(attr, function(a) {
+                     return new sign(a);
+                   });
+                   signs.set(models);
+                   signs.create();
+                   signs.trigger('set', signs.models)
+                 });
+               }
   });
+  KSL.model.signs = signs;
 
   // Views
-  KSL.view.sign = Backbone.View.extend({
+  KSL.view.article = Backbone.View.extend({
     template:  Handlebars.compile($("#sign-template").html()),
 
     render:    function() {
@@ -65,22 +58,23 @@ $(function() {
                }
   });
 
-  KSL.view.signs = Backbone.View.extend({
+  KSL.view.articles = Backbone.View.extend({
 
     initialize: function() {
-                  this.listenTo(this.collection, 'sync', this.render);
+                  this.listenTo(this.collection, 'set', this.render);
                 },
 
     render:   function() {
                 this.$el.html('');
+                var articles = this;
                 _.each(this.collection.models, function(sign) {
                   var $el = $("<div></div>");
-                  var signView = new KSL.view.sign({
+                  var article = new KSL.view.article({
                     el: $el,
                     model: sign
                   })
-                  signView.render();
-                  this.$el.append(signView.$el);
+                  article.render();
+                  articles.$el.append(article.$el);
                 });
               }
   });
@@ -93,10 +87,13 @@ $(function() {
   window.app = {
   };
 
-  app.signs = new KSL.model.signs();
-  app.articles = new KSL.view.signs({
-    collection: app.signs
-  });
+  app.signs = new KSL.model.signs({});
 
-  app.signs.fetch(); // renders on sync
+  app.articles = new KSL.view.articles({
+    collection: app.signs,
+    el: $("#articles")
+  });
+  app.articles.render();
+
+  app.signs.bootstrap();
 });
