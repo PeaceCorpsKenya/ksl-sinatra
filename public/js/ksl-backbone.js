@@ -82,7 +82,7 @@ $(function() {
                   signView.render();
                   this.$el.append(signView.$el);
                 });
-              },
+              }
   });
 
 });
