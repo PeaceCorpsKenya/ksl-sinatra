@@ -11,8 +11,10 @@ $(function() {
 
   // Models
   var sign = Backbone.Model.extend({
+
     initialize: function() {
-                },
+	
+    },
 
     localStorage: new Backbone.LocalStorage("sign"),
 
@@ -66,7 +68,8 @@ $(function() {
     render:   function() {
                 this.$el.html('');
                 var articles = this;
-                _.each(this.collection.models, function(sign) {
+	        _.each(this.collection.models, function(sign) {
+		  sign.set("videourl", sign.get("url"))
                   var $el = $("<div></div>");
                   var article = new KSL.view.article({
                     el: $el,
