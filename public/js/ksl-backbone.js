@@ -78,6 +78,34 @@ $(function() {
                }
   });
 
+  KSL.view.minimalarticle = Backbone.View.extend({
+    template:  Handlebars.compile($("#sign-minimal-template").html()),
+
+    render:    function() {
+                 this.$el.html(this.template(this.model.attributes));
+               }
+  });
+
+
+  KSL.view.minimalarticles = Backbone.View.extend({
+    initialize: function() {
+                },
+
+    render:   function() {
+                this.$el.html('');
+                var articles = this;
+                _.each(this.collection.models, function(sign) {
+                  var $el = $("<div></div>");
+                  var article = new KSL.view.minimalarticle({
+                    el: $el,
+                    model: sign
+                  });
+                  article.render();
+                  articles.$el.append(article.$el);
+                });
+              }
+  });
+
   KSL.view.articles = Backbone.View.extend({
     initialize: function() {
                 },
@@ -201,7 +229,7 @@ $(function() {
 
   app.signs = new KSL.model.signs({});
 
-  app.articles = new KSL.view.articles({
+  app.articles = new KSL.view.minimalarticles({
     collection: app.signs,
     el: $("#articles")
   });
