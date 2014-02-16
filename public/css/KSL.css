@@ -10,10 +10,12 @@ body {
   position: relative;
   cursor: default; }
 
-  .top-navbar{
+   .top-navbar{
    background-color: #262214;
-   height: 104px;
-   width: 73%;
+   height: 100px;
+   max-width: 1000px;
+   min-width: 50%;
+   width: auto;
    float: left;
    padding: 0;
 
@@ -21,8 +23,8 @@ body {
  }
 
 .logo{
-    height: 160px;
-    width: 320px;
+    height: 161px;
+    width: 322px;
     float: left;
 }
 
@@ -35,7 +37,7 @@ body {
   padding-top: 40px;
   background-color: #FFFEF3;
   padding-color: white;
-  height: 42.1px;
+  height: 40.5px;
 }
 
 .button {
