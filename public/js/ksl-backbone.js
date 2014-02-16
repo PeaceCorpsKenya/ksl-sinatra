@@ -88,6 +88,10 @@ $(function() {
 
   KSL.view.categoryTags = Backbone.View.extend({
 
+    events:  {
+      'click .browse-category': 'browseCategory'
+    },
+
     initialize: function() {
                   this.listenTo(this.collection, 'set', this.render);
                 },
@@ -105,14 +109,42 @@ $(function() {
                     categoryTag.render();
                     obj.$el.append(categoryTag.$el);
                   });
-                }
+                },
+
+    browseCategory: function(evt) {
+                      evt.preventDefault();
+                      this.trigger('browse:category', $(evt.currentTarget).data('name'));
+                    }
   });
 
 
+  KSL.workspace = Backbone.Router.extend({
+    routes: {
+      "help":                 "help",      // #help
+      "category/:name":      "category"    // all in a category
+    },
+
+    category: function(name) {
+      Backbone.history.navigate("/category"+name);
+
+      var signs = new KSL.model.signs(_.select(app.signs.models, function(s) {
+        return s.get('name') == name;
+      }));
+
+      var articles = new KSL.view.articles({
+        collection: signs,
+        el: $("#articles")
+      });
+
+      articles.render();
+    }
+  });
 });
 
-$(function() {
 
+
+
+$(function() {
   // Run app
   window.app = {
   };
@@ -132,5 +164,7 @@ $(function() {
 
   app.signs.bootstrap();
 
+  app.workspace = new KSL.workspace();
+  app.workspace.listenTo(app.categoryTags, 'browse:category', app.workspace.category);
 
 });
