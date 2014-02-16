@@ -128,7 +128,7 @@ $(function() {
       Backbone.history.navigate("/category"+name);
 
       var signs = new KSL.model.signs(_.select(app.signs.models, function(s) {
-        return s.get('name') == name;
+        return _.contains(_.map(s.get('categories'), function(m) { return m.name; }), name);
       }));
 
       var articles = new KSL.view.articles({
@@ -165,6 +165,7 @@ $(function() {
   app.signs.bootstrap();
 
   app.workspace = new KSL.workspace();
+  Backbone.history.start({pushState: true})
   app.workspace.listenTo(app.categoryTags, 'browse:category', app.workspace.category);
 
 });
