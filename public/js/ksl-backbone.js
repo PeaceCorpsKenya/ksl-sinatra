@@ -35,6 +35,20 @@ $(function() {
 
     collection: {localStorage: new Backbone.LocalStorage("signs")},
 
+    search:    function(query) {
+      if(query) {
+        var re = new RegExp(query + "*");
+        var signs = _.select(this.models, function(sign) {
+          return _.any(sign.get('categories'), function(category) {
+            return re.test(category.name);
+          });
+        });
+        return signs;
+      } else {
+        return [];
+      }
+    },
+
     bootstrap: function() {
                  var signs = this;
                  signs.fetch();
@@ -68,8 +82,8 @@ $(function() {
     render:   function() {
                 this.$el.html('');
                 var articles = this;
-	        _.each(this.collection.models, function(sign) {
-		  sign.set("videourl", sign.get("url"))
+                _.each(this.collection.models, function(sign) {
+                  sign.set("videourl", sign.get("url"))
                   var $el = $("<div></div>");
                   var article = new KSL.view.article({
                     el: $el,
@@ -120,6 +134,31 @@ $(function() {
                     }
   });
 
+  KSL.view.search = Backbone.View.extend({
+    events:     {
+      'keyup [name="search"]': 'search'
+    },
+
+    template:   Handlebars.compile($("#search-template").html()),
+
+    search:     function(evt) {
+                  evt.preventDefault();
+                  this.query = this.$el.find("[name='search']").val();
+                  var signs = new Backbone.Collection({});
+                  signs.add(this.collection.search(this.query));
+                  var articles = new KSL.view.articles({
+                    collection: signs,
+                    el: $("#articles")
+                  });
+                  articles.render();
+                },
+
+    render:     function() {
+                  this.$el.html(this.template({
+                    query: this.query
+                  }));
+                }
+  });
 
   KSL.workspace = Backbone.Router.extend({
     routes: {
@@ -145,8 +184,6 @@ $(function() {
 });
 
 
-
-
 $(function() {
   // Run app
   window.app = {
@@ -166,6 +203,13 @@ $(function() {
   });
 
   app.signs.bootstrap();
+
+  app.search = new KSL.view.search({
+    collection: app.signs,
+    el: $("<div></div>")
+  });
+  app.search.render();
+  $("#search-bar").append(app.search.$el);
 
   app.workspace = new KSL.workspace();
   Backbone.history.start({pushState: true})

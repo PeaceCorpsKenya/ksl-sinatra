@@ -14,9 +14,10 @@
     <div class="row">
       <div class="large-12 columns">
         <div class="nav-bar right">
+          <div id='search-bar'>
+          </div>
           <ul class="button-group">
-            <li><a href="#" class="button">Link 1</a></li>
-            <li><a href="#" class="button">Link 2</a></li>
+            <li><a href="#" class="button">Search</a></li>
           </ul>
         </div>
         <h1>KSL <small>Kenyan Sign Language</small></h1>
@@ -73,6 +74,12 @@
     </div>
     </footer>
 
+
+    <script type='text/x-handlebars-template' id='search-template'>
+      <form>
+        <input type='text' name='search' value="{{query}}" placeholder="Search"/>
+      </form>
+    </script>
 
     <script type='text/x-handlebars-template' id='sign-template'>
         <article>
