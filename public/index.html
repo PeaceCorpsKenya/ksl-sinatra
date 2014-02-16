@@ -13,7 +13,7 @@
 
   <body>
 
-    <div class="contain-to-grid sticky">
+    <div class="contain-to-grid sticky columns">
       <nav class="top-bar" data-topbar>
       <ul class="title-area">
         <li class="name">
@@ -23,51 +23,14 @@
       </ul>
 
       <section class="top-bar-section">
-      <!-- Right Nav Section -->
-      <ul class="right">
-        <li class="active"><a href="#">Right Button Active</a></li>
-        <li class="has-dropdown">
-        <a href="#">Right Button with Dropdown</a>
-        <ul class="dropdown">
-          <li><a href="#">First link in dropdown</a></li>
-        </ul>
-        </li>
-      </ul>
-
       <!-- Left Nav Section -->
-      <ul class="left">
-<li class="has-form">
-  <div class="row collapse">
-    <div class="large-8 small-9 columns">
-      <input type="text" placeholder="Find Stuff">
-    </div>
-    <div class="large-4 small-3 columns">
-      <a href="#" class="alert button expand">Search</a>
-    </div>
-  </div>
-</li>
-        
-        <li><a href="#">Left Nav Button</a></li>
+      <ul class="left" id='search-bar'>
       </ul>
       </section>
       </nav>
     </div>
 
-    <div id='search-bar'>
-    </div>
     <!-- End Nav -->
-
-
-    <li class="has-form">
-    <div class="row collapse">
-      <div class="large-8 small-9 columns">
-        <input type="text" placeholder="Find Stuff">
-      </div>
-      <div class="large-4 small-3 columns">
-        <a href="#" class="alert button expand">Search</a>
-      </div>
-    </div>
-    </li>
 
 
     <!-- Main Page Content and Sidebar -->
@@ -110,10 +73,16 @@
     </footer>
 
     <script type='text/x-handlebars-template' id='search-template'>
-      <form class='form-wrapper cf'>
-        <input type='text' name='search' value="{{query}}" placeholder="Search"/>
-        <button type='submit'>Search</button>
-      </form>
+      <li class="has-form">
+      <div class="row collapse">
+        <div class="large-8 small-9 columns">
+          <input type='text' name='search' value="{{query}}" placeholder="Search"/>
+        </div>
+        <div class="large-4 small-3 columns">
+          <button class="alert button expand" type='submit'>Search</a>
+        </div>
+      </div>
+      </li>
     </script>
 
     <script type='text/x-handlebars-template' id='sign-minimal-template'>

@@ -39,9 +39,9 @@ $(function() {
       if(query) {
         var re = new RegExp("^" + query);
         var signs = _.select(this.models, function(sign) {
-          return _.any(sign.get('categories'), function(category) {
+          return (re.test(sign.get('name'))) || (_.any(sign.get('categories'), function(category) {
             return re.test(category.name);
-          });
+          }));
         });
         // deep copy
         var signs = _.map(signs, function(sign) {
