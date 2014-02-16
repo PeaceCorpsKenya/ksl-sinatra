@@ -59,7 +59,6 @@ $(function() {
   });
 
   KSL.view.articles = Backbone.View.extend({
-
     initialize: function() {
                   this.listenTo(this.collection, 'set', this.render);
                 },
@@ -79,6 +78,37 @@ $(function() {
               }
   });
 
+  KSL.view.categoryTag = Backbone.View.extend({
+    template:    Handlebars.compile($("#category-tag").html()),
+
+    render:     function() {
+                  this.$el.html(this.template(this.model));
+                }
+  });
+
+  KSL.view.categoryTags = Backbone.View.extend({
+
+    initialize: function() {
+                  this.listenTo(this.collection, 'set', this.render);
+                },
+
+    render:    function() {
+                  this.categories = _.flatten(_.map(this.collection.models, function(model) {
+                    return model.get('categories');
+                  }));
+                  var obj = this;
+                  this.$el.html('');
+                  _.each(this.categories, function(category) {
+                    var categoryTag = new KSL.view.categoryTag({
+                      model: category
+                    });
+                    categoryTag.render();
+                    obj.$el.append(categoryTag.$el);
+                  });
+                }
+  });
+
+
 });
 
 $(function() {
@@ -95,5 +125,12 @@ $(function() {
   });
   app.articles.render();
 
+  app.categoryTags = new KSL.view.categoryTags({
+    el: $("#category-tags"),
+    collection: app.signs
+  });
+
   app.signs.bootstrap();
+
+
 });

@@ -37,12 +37,7 @@
       <aside class="large-3 columns">
 
       <h5>Categories</h5>
-      <ul class="side-nav">
-        <li><a href="#">News</a></li>
-        <li><a href="#">Code</a></li>
-        <li><a href="#">Design</a></li>
-        <li><a href="#">Fun</a></li>
-        <li><a href="#">Weasels</a></li>
+      <ul class="side-nav" id='category-tags'>
       </ul>
 
       <div class="panel">
@@ -107,6 +102,11 @@
         </div>
         </article>
     </script>
+
+    <script type='text/x-handlebars-template' id='category-tag'>
+      <li><a href="#" data-name="{{name}}">{{name}}</a></li>
+    </script>
+
 
     <script src="js/vendor/jquery.js"></script>
     <script src="js/foundation.min.js"></script>
