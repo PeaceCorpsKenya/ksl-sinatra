@@ -1,19 +1,28 @@
 $(function() {
+  // Run app
+  window.app = {};
+  window.online = (new RegExp('http')).test(window.location.protocol);
+
+  Backbone.sync = function Sync() {
+    if(window.online) {
+      return Backbone.ajaxSync.apply(this, arguments);
+    } else {
+      return Backbone.localSync.apply(this, arguments);
+    }
+  };
+});
+
+
+$(function() {
   window.KSL = {
     model: {},
     view:  {}
-  };
-
-  Backbone.sync = function Sync() {
-    Backbone.ajaxSync.apply(this, arguments);
-    return Backbone.localSync.apply(this, arguments);
   };
 
   // Models
   var sign = Backbone.Model.extend({
 
     initialize: function() {
-	
     },
 
     localStorage: new Backbone.LocalStorage("sign"),
@@ -175,7 +184,9 @@ $(function() {
     search:     function(evt) {
                   evt.preventDefault();
                   this.query = this.$el.find("[name='search']").val();
-                  Backbone.history.navigate("a/search/"+this.query);
+                  if(window.online) {
+                    Backbone.history.navigate("a/search/"+this.query);
+                  }
                   var signs = new KSL.model.signs();
                   signs.add(this.collection.search(this.query));
                   var articles = new KSL.view.articles({
@@ -200,7 +211,9 @@ $(function() {
     },
 
     open: function(name) {
-      Backbone.history.navigate("a//sign/"+name);
+      if(window.online) {
+        Backbone.history.navigate("a//sign/"+name);
+      }
       var signs = new KSL.model.signs(_.detect(app.signs.models, function(s) {
         return s.get('name') == name;
       }));
@@ -214,7 +227,9 @@ $(function() {
     },
 
     category: function(name) {
+      if(window.online) {
       Backbone.history.navigate("a/category/"+name);
+      }
 
       var signs = new KSL.model.signs(_.select(app.signs.models, function(s) {
         return _.contains(_.map(s.get('categories'), function(m) { return m.name; }), name);
@@ -235,12 +250,7 @@ $(function() {
   });
 });
 
-
 $(function() {
-  // Run app
-  window.app = {
-  };
-
   app.signs = new KSL.model.signs({});
 
   app.articles = new KSL.view.minimalarticles({
@@ -264,8 +274,10 @@ $(function() {
   app.search.render();
   $("#search-bar").append(app.search.$el);
 
-  app.workspace = new KSL.workspace();
-  Backbone.history.start({pushState: true})
-  app.workspace.listenTo(app.categoryTags, 'browse:category', app.workspace.category);
+  if(window.online) {
+    app.workspace = new KSL.workspace();
+    Backbone.history.start({pushState: true})
+    app.workspace.listenTo(app.categoryTags, 'browse:category', app.workspace.category);
+  }
 
 });
