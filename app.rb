@@ -12,6 +12,9 @@ get '/' do
   send_file page
 end
 
+get '/a/*' do
+end
+
 get "/signs.json" do
   limit = params[:limit] || 10
   offset = params[:offset] || 0

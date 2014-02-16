@@ -175,7 +175,7 @@ $(function() {
     search:     function(evt) {
                   evt.preventDefault();
                   this.query = this.$el.find("[name='search']").val();
-                  Backbone.history.navigate("/search/"+this.query);
+                  Backbone.history.navigate("a/search/"+this.query);
                   var signs = new KSL.model.signs();
                   signs.add(this.collection.search(this.query));
                   var articles = new KSL.view.articles({
@@ -194,13 +194,27 @@ $(function() {
 
   KSL.workspace = Backbone.Router.extend({
     routes: {
-      "help":                 "help",      // #help
-      "category/:name":      "category",    // all in a category
-      "search/:name":        "search"
+      "a/open/:name":          "open",
+      "a/category/:name":      "category",    // all in a category
+      "a/search/:name":        "search"
+    },
+
+    open: function(name) {
+      Backbone.history.navigate("a//sign/"+name);
+      var signs = new KSL.model.signs(_.detect(app.signs.models, function(s) {
+        return s.get('name') == name;
+      }));
+
+      var articles = new KSL.view.articles({
+        collection: signs,
+        el: $("#articles")
+      });
+
+      articles.render();
     },
 
     category: function(name) {
-      Backbone.history.navigate("/category/"+name);
+      Backbone.history.navigate("a/category/"+name);
 
       var signs = new KSL.model.signs(_.select(app.signs.models, function(s) {
         return _.contains(_.map(s.get('categories'), function(m) { return m.name; }), name);

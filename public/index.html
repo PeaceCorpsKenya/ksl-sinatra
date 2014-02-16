@@ -43,7 +43,6 @@
         Categories:<br>
         <a href="#"><img src="img/bio.png">  Biology   </a><br>
         <a href="#"><img src="img/chem.png">  Chemistry   </a> <br>
-        <!--a href="#"><img src="img/HIV.png"> HIV/Aids</a> <br-->
       <a href="#"><img src="img/house.png"> Household items</a> <br>
       <a href="#"><img src="img/math.png"> Mathematics</a> <br>
       <a href="#"><img src="img/physics.png"> Physics</a><br>
@@ -55,8 +54,6 @@
 
   <!-- Main Blog Content -->
   <div class="large-9 columns" role="content">
-    <article>
-    <h3>A</h3>
     <div class="row">
       <div class="wrapper" "wiz">
         <div class = "body-color">
@@ -65,7 +62,6 @@
         </div>
       </div>
     </div>
-    </article>
     <!-- End Main Content and Sidebar -->
     <!-- Footer -->
     <footer class="footer">
@@ -101,43 +97,36 @@
           {{/each}}
         </div>
 
-        <div class="">
-          <div class="flex-video">
-            <iframe class="thumbnail-video" autoplay='false' type="video/webm" src="{{videourl}}" frameborder="0" allowfullscreen></iframe>
-          </div>
-
-          <div class="">
-            <div class="flex-video">
-              <iframe class="thumbnail-video" src="{{videourl}}" frameborder="0" allowfullscreen></iframe>
-            </div>
-          </div>
-
-          <div class='keywords'>
-            {{#each keyword}}
-            <span class='keyword'>{{keyword}}</span>
-            {{/each}}
-          </div>
-
+        <div class='keywords'>
+          {{#each keyword}}
+          <span class='keyword'>{{keyword}}</span>
+          {{/each}}
         </div>
-        </article>
-      </script>
 
-      <script type='text/x-handlebars-template' id='category-tag'>
-        <li><a href="#" class='browse-category' data-name="{{name}}">{{name}}</a></li>
-      </script>
+        <div class=" widescreen vimeo">
+          <video id="chemical" src="{{url}}" controls=""></video>
+        </div>
+
+      </div>
+      </article>
+    </script>
+
+    <script type='text/x-handlebars-template' id='category-tag'>
+      <li><a href="#" class='browse-category' data-name="{{name}}">{{name}}</a></li>
+    </script>
 
 
-      <script src="js/vendor/jquery.js"></script>
-      <script src="js/foundation.min.js"></script>
-      <script>
-        $(document).foundation();
-      </script>
+    <script src="js/vendor/jquery.js"></script>
+    <script src="js/foundation.min.js"></script>
+    <script>
+      $(document).foundation();
+    </script>
 
-      <script src="js/handlebars.js"></script>
-      <script src="js/underscore-min.js"></script>
-      <script src="js/backbone.js"></script>
-      <script type="text/javascript" src="js/backbone.localStorage.js"></script>
-      <script src="js/ksl-backbone.js"></script>
+    <script src="js/handlebars.js"></script>
+    <script src="js/underscore-min.js"></script>
+    <script src="js/backbone.js"></script>
+    <script type="text/javascript" src="js/backbone.localStorage.js"></script>
+    <script src="js/ksl-backbone.js"></script>
 
-    </body>
-  </html>
+  </body>
+</html>
