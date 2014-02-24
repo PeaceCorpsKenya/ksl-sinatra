@@ -1,0 +1,17 @@
+.has-form {list-style-type:none;}
+
+.button {background-color:#8F8F8F;
+	}
+.button:hover {
+        background: #D6D6D6; }
+
+.search-red {
+	background-color: #c60f13;
+	padding-top: 200px;
+	padding-bottom: 100px;
+}
+
+.arrow { margin-right: auto;
+	margin-left: auto;
+
+}
