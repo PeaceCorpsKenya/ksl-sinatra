@@ -6,12 +6,18 @@
         background: #D6D6D6; }
 
 .search-red {
-	background-color: #c60f13;
+	background-color: #db251d;
 	padding-top: 200px;
-	padding-bottom: 100px;
+	padding-bottom: 0px;
 }
 
-.arrow { margin-right: auto;
-	margin-left: auto;
+.arrow { 
+	margin: 70px auto 0px auto;
+	display: block;
+}
 
+.arrowing {
+	background-position: center;
+	margin-right: auto;
+	margin-left: auto;
 }
