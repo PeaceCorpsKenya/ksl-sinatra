@@ -12,6 +12,10 @@
 	color: #FFFFFF;
 }
 
+.white {
+	color: #FFFFFF;
+}
+
 .arrow { 
 	margin: 70px auto 0px auto;
 	display: block;
@@ -30,7 +34,9 @@
   border-width: 0 0;
   clear: both;
   margin: 1.25rem 0 1.1875rem;
-  height: 0; }
+  height: 0; 
+  background: #FFFFFF;
+}
 
  .search {
  	color: #FFFFFF;
@@ -46,4 +52,14 @@
 
 .panel {
 	text-align: center;
+}
+
+.footergreen {
+	height: auto;
+	background-color: #00a03b;
+	min-height: 32px;
+}
+
+p {
+	color:#000;
 }
