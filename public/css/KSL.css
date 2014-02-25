@@ -9,15 +9,41 @@
 	background-color: #db251d;
 	padding-top: 200px;
 	padding-bottom: 0px;
+	color: #FFFFFF;
 }
 
 .arrow { 
 	margin: 70px auto 0px auto;
 	display: block;
+	text-align: center;
 }
 
 .arrowing {
-	background-position: center;
 	margin-right: auto;
 	margin-left: auto;
+	height: 25px;
+	width: 90px;
+}
+
+.hr1 {
+  border: solid #dddddd;
+  border-width: 0 0;
+  clear: both;
+  margin: 1.25rem 0 1.1875rem;
+  height: 0; }
+
+ .search {
+ 	color: #FFFFFF;
+ 	text-align: center;
+ 	font-family: "Helvetica", Helvetica, Arial, sans-serif;
+
+ }
+
+.search a:link {color:#FFF;}     
+.search a:visited {color:#FFF;}  
+.search a:hover {color:#D6D6D6;}  
+.search a:active {color:#0000FF;}  
+
+.panel {
+	text-align: center;
 }
