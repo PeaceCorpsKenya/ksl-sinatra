@@ -1,0 +1,246 @@
+
+
+
+
+<!doctype html>
+<html class="no-js" lang="en">
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>KSL | Kenyan Sign Language | Peace Corps</title>
+    <script src="js/vendor/modernizr.js"></script>
+
+    <link rel="stylesheet" href="css/foundation.css">
+    <link rel="stylesheet" href="css/KSL.css">
+  </head>
+
+  <body>
+
+  <!-- Nav -->
+<nav class="top-bar" data-topbar>
+  <ul class="title-area">
+    <li class="name">
+      <h1><a href="index.html">Kenyan Sign Language</a></h1>
+    </li>
+    <li class="toggle-topbar menu-icon"><a href="index.html">Menu</a></li>
+  </ul>
+
+  <section class="top-bar-section">
+    <!-- Right Nav Section -->
+    <ul class="right">
+      <li><a href="#">English</a></li>
+      <li><a href="#">Kenyan</a></li>
+    </ul>
+  </section>
+</nav>
+    <!-- End Nav -->
+
+
+    <!-- Main Content and Sidebar -->
+    <!-- Seach -->
+
+<div class="search-red">
+<li class="has-form">
+  <div class="row collapse">
+    <div class="large-10 small-9 columns">
+      <input type="text" placeholder="Find Your Sign">
+    </div>
+    <div class="large-2 small-3 columns">
+      <a href="#" class="small button" >Search</a>
+    </div>
+  </div>
+</li>
+</div>
+
+    <!-- Main List View Content -->
+    <div class="large-9 columns" role="content">
+
+      <div class="hr1">
+      </div>
+ 
+      <article>
+        <div class="row">
+          <div class="large-12 columns">
+    <form>
+  <div class="row">
+    <div class="large-12 columns">
+      <label>Input Label
+        <input type="text" placeholder="large-12.columns" />
+      </label>
+    </div>
+ 
+<form>
+  <div class="row">
+    <div class="large-12 columns">
+      <div class="row collapse">
+        <div class="small-10 columns">
+          <input type="text" placeholder="Upload your video here">
+        </div>
+        <div class="small-2 columns">
+          <a href="#" class="button postfix">Upload</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</form>
+
+
+
+
+    <div class="large-6 columns">
+      <label class="error">Error
+        <input type="text" class="error" />
+      </label>
+      <small class="error">Invalid entry</small>
+    </div>
+
+
+ </div>
+
+
+  <div class="row">
+    <div class="large-4 columns">
+      <ul>
+        <label>Check the categoroies that apply: </label>
+     <li> <input id="animal_checkbox" type="checkbox"><label for="animal_checkbox">Animals</label> </li>
+     <li> <input id="biology_checkbox" type="checkbox"><label for="biology_checkbox">Biology</label> </li>
+     <li> <input id="chemistry_checkbox" type="checkbox"><label for="chemistry_checkbox">Chemistry</label> </li>
+     <li> <input id="food_checkbox" type="checkbox"><label for="food_checkbox">Food</label> </li>
+     <li> <input id="household_checkbox" type="checkbox"><label for="household_checkbox">Household items</label> </li>
+     <li> <input id="letter_checkbox" type="checkbox"><label for="letter_checkbox">Letter of Alphabet</label> </li>
+     <li> <input id="math_checkbox" type="checkbox"><label for="math_checkbox">Mathematics</label> </li>
+     <li> <input id="number_checkbox" type="checkbox"><label for="number_checkbox">Numbers</label> </li>
+     <li> <input id="plants_checkbox" type="checkbox"><label for="plants_checkbox">Plants</label> </li>
+     <li> <input id="sci_checkbox" type="checkbox"><label for="sci_checkbox">Science</label> </li>
+     <li> <input id="none_checkbox" type="checkbox"><label for="none_checkbox">None</label> </li>
+      </ul>
+    </div>
+
+    <div class="large-8 columns">
+      <label>English Definition
+        <textarea placeholder="Please write the English Definition here. Leave blank if you do not know."></textarea>
+      </label>
+    </div>
+
+    <div class="large-8 columns">
+      <label>Kenyan Definition
+        <textarea placeholder="Please write the Kenyan Definition here. Leave blank if you do not know."></textarea>
+      </label>
+    </div>
+
+        <div class="large-8 columns">
+      <label>Notes
+        <textarea placeholder="Please write any notes here. Leave blank if you do not have any."></textarea>
+      </label>
+    </div>
+  </div>
+</form>
+          </div>
+        </div>
+      </article>
+ 
+      <hr />
+
+
+  </div>
+ 
+    <!-- End Main Content -->
+
+
+
+    <!-- End Main Content and Sidebar -->
+  </div>
+
+
+  <!-- Footer -->
+
+
+  <footer class="row">
+    <div class="large-12 columns">
+      <hr />
+      <div class="row">
+        <div class="large-6 columns ">
+          <p>Why sleep when opportunity beckons?</p>
+        </div>
+        <div class="large-6 columns">
+          <ul class="inline-list right">
+            <li><a href="index.html">KSL</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="upload.html">Upload</a></li>
+            <li><a href="http://www.peacecorps.gov/">Peace Corp</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+<div class="footergreen">
+</div>
+
+  <!-- End Footer -->
+
+    <script type='text/x-handlebars-template' id='search-template'>
+      <li class="has-form">
+      <div class="row collapse">
+        <div class="large-8 small-9 columns">
+          <input type='text' name='search' value="{{query}}" placeholder="Search"/>
+        </div>
+        <div class="large-4 small-3 columns">
+          <button class="alert button expand" type='submit'>Search</a>
+        </div>
+      </div>
+      </li>
+    </script>
+
+    <script type='text/x-handlebars-template' id='sign-minimal-template'>
+      <li><a href={{url}}>{{name}}</a></li>
+    </script>
+
+    <script type='text/x-handlebars-template' id='sign-template'>
+      <article>
+      <h3>{{name}}</h3>
+
+      <div class="row">
+        <div class="">
+          {{#each definition}}
+          <h4>{{language}}</h4>
+          <p>{{definition}}</p>
+          {{/each}}
+        </div>
+
+        <div class='keywords'>
+          {{#each keyword}}
+          <span class='keyword'>{{keyword}}</span>
+          {{/each}}
+        </div>
+
+        <div class=" widescreen vimeo">
+          <video id="chemical" src="{{url}}" controls=""></video>
+        </div>
+
+      </div>
+      </article>
+    </script>
+
+    <script type='text/x-handlebars-template' id='category-tag'>
+      <li><a href="#" class='browse-category' data-name="{{name}}">{{name}}</a></li>
+    </script>
+
+
+    <script src="js/vendor/jquery.js"></script>
+    <script src="js/foundation.min.js"></script>
+    <script>
+      $(document).foundation();
+    </script>
+
+    <script src="js/handlebars.js"></script>
+    <script src="js/underscore-min.js"></script>
+    <script src="js/backbone.js"></script>
+    <script type="text/javascript" src="js/backbone.localStorage.js"></script>
+    <script src="js/ksl-backbone.js"></script>
+
+  </body>
+</html>
+
+

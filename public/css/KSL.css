@@ -5,12 +5,20 @@
 .button:hover {
         background: #D6D6D6; }
 
-.search-red {
+.search-red-main {
 	background-color: #db251d;
 	padding-top: 200px;
 	padding-bottom: 0px;
 	color: #FFFFFF;
 }
+
+.search-red {
+	background-color: #db251d;
+	padding-top: 30px;
+	padding-bottom: 0px;
+	color: #FFFFFF;
+}
+
 
 .white {
 	color: #FFFFFF;
@@ -38,7 +46,7 @@
   background: #FFFFFF;
 }
 
- .search {
+.search {
  	color: #FFFFFF;
  	text-align: center;
  	font-family: "Helvetica", Helvetica, Arial, sans-serif;
@@ -54,6 +62,7 @@
 	text-align: center;
 }
 
+
 .footergreen {
 	height: auto;
 	background-color: #00a03b;
@@ -62,4 +71,8 @@
 
 p {
 	color:#000;
+}
+
+ul {
+	list-style: none;
 }

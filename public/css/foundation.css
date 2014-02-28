@@ -2421,7 +2421,7 @@ ul.pagination {
 .side-nav {
   display: block;
   margin: 0 0 0 5rem;
-  padding: 0.875rem 0;
+  padding: 0;
   list-style-type: none;
   list-style-position: inside;
   font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif; }
