@@ -66,8 +66,17 @@
 .footergreen {
 	height: auto;
 	background-color: #00a03b;
-	min-height: 32px;
+	min-height: 0px;
 }
+
+.footergreen a:link {color:#FFF;}     
+.footergreen a:visited {color:#FFF;}  
+.footergreen a:hover {color:#D6D6D6;}  
+.footergreen a:active {color:#0000FF;} 
+
+.footergreen p {
+	color: #fff;
+} 
 
 p {
 	color:#000;
@@ -75,4 +84,8 @@ p {
 
 ul {
 	list-style-type:none;
+}
+
+.right {
+	float: right;
 }
