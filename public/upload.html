@@ -43,108 +43,138 @@
 <div class="search-red">
 <li class="has-form">
   <div class="row collapse">
-    <div class="large-10 small-9 columns">
-      <input type="text" placeholder="Find Your Sign">
+
+  <form>
+  <div class="row">
+    <div class="small-10 large-12 columns">
+      <div class="row collapse">
+        <div class="small-10 columns">
+          <input type="text" placeholder="Type to Search for Signs">
+        </div>
+        <div class="small-2 columns">
+          <a href="#" class="button postfix">Search</a>
+        </div>
+      </div>
     </div>
-    <div class="large-2 small-3 columns">
-      <a href="#" class="small button" >Search</a>
-    </div>
+
+  </div>
+  </form>
+
+
   </div>
 </li>
 </div>
 
-    <!-- Main List View Content -->
-    <div class="large-9 columns" role="content">
+    <!-- End Seach -->
 
+    <!-- Main List View Content -->
+
+    <div class="row">
       <div class="hr1">
       </div>
- 
-      <article>
-        <div class="row">
-          <div class="large-12 columns">
-    <form>
-  <div class="row">
-    <div class="large-12 columns">
-      <label>Input Label
-        <input type="text" placeholder="large-12.columns" />
-      </label>
-    </div>
- 
-<form>
-  <div class="row">
-    <div class="large-12 columns">
-      <div class="row collapse">
-        <div class="small-10 columns">
-          <input type="text" placeholder="Upload your video here">
-        </div>
-        <div class="small-2 columns">
-          <a href="#" class="button postfix">Upload</a>
+      <div class="large-12 columns">
+          <h3>Upload New Signs </h3>
+          <p>Upload new signs or variations to help keep the database up to date.</p>
+          <form>
+            <div class="row">
+              <div class="large-12 columns">
+                <div class="row collapse">
+                  <div class="small-10 columns">
+                    <input type="text" placeholder="Upload your video here">
+                  </div>
+                  <div class="small-2 columns">
+                    <label>
+                    <a href="#" class="button postfix">Browse</a>
+                  </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!--Error Form
+
+              <div class="row">
+                <div class="large-12 columns">
+                  <div class="row collapse">
+                    <div class="small-10 columns">
+                    <label class="error">Upload Sign Video
+                      <input type="text" class="error" placeholder="Upload your video here">
+                    </label>
+                    <small class="error">Invalid entry</small>
+                    </div>
+                    <div class="small-2 columns">
+                      <label><p></p>
+                      <a href="#" class="button postfix">Browse</a>
+                    </label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              -->
+
+                <div class="row">
+                <div class="large-4 columns">
+                  <ul>
+                    <label>Check the categoroies that apply: </label>
+                     <li> <input id="animal_checkbox" type="checkbox"><label for="animal_checkbox">Animal</label> </li>
+                     <li> <input id="biology_checkbox" type="checkbox"><label for="biology_checkbox">Biology</label> </li>
+                     <li> <input id="chemistry_checkbox" type="checkbox"><label for="chemistry_checkbox">Chemistry</label> </li>
+                     <li> <input id="food_checkbox" type="checkbox"><label for="food_checkbox">Food</label> </li>
+                     <li> <input id="household_checkbox" type="checkbox"><label for="household_checkbox">Household item</label> </li>
+                     <li> <input id="letter_checkbox" type="checkbox"><label for="letter_checkbox">Alphabet</label> </li>
+                     <li> <input id="math_checkbox" type="checkbox"><label for="math_checkbox">Mathematics</label> </li>
+                     <li> <input id="number_checkbox" type="checkbox"><label for="number_checkbox">Number</label> </li>
+                     <li> <input id="plants_checkbox" type="checkbox"><label for="plants_checkbox">Plant</label> </li>
+                     <li> <input id="sci_checkbox" type="checkbox"><label for="sci_checkbox">Science</label> </li>
+                     <li> <input id="none_checkbox" type="checkbox"><label for="none_checkbox">None</label> </li>
+                  </ul>
+                </div>
+
+                <div class="large-8 columns">
+                  <label>English Definition
+                    <textarea placeholder="Please write the English Definition here. Leave blank if you do not know."></textarea>
+                  </label>
+                </div>
+
+                <div class="large-8 columns">
+                  <label>Kenyan Definition
+                    <textarea placeholder="Please write the Kenyan Definition here. Leave blank if you do not know."></textarea>
+                  </label>
+                </div>
+
+                <div class="large-8 columns">
+                  <label>Notes
+                    <textarea placeholder="Please write any notes here. Leave blank if you do not have any."></textarea>
+                  </label>
+                </div>
+              </div>
+                    
+
+
+
+
+          </form>
         </div>
       </div>
     </div>
 
-  </div>
-</form>
+ 
 
 
 
 
-    <div class="large-6 columns">
-      <label class="error">Error
-        <input type="text" class="error" />
-      </label>
-      <small class="error">Invalid entry</small>
-    </div>
+
+
+
+
 
 
  </div>
 
 
-  <div class="row">
-    <div class="large-4 columns">
-      <ul>
-        <label>Check the categoroies that apply: </label>
-     <li> <input id="animal_checkbox" type="checkbox"><label for="animal_checkbox">Animals</label> </li>
-     <li> <input id="biology_checkbox" type="checkbox"><label for="biology_checkbox">Biology</label> </li>
-     <li> <input id="chemistry_checkbox" type="checkbox"><label for="chemistry_checkbox">Chemistry</label> </li>
-     <li> <input id="food_checkbox" type="checkbox"><label for="food_checkbox">Food</label> </li>
-     <li> <input id="household_checkbox" type="checkbox"><label for="household_checkbox">Household items</label> </li>
-     <li> <input id="letter_checkbox" type="checkbox"><label for="letter_checkbox">Letter of Alphabet</label> </li>
-     <li> <input id="math_checkbox" type="checkbox"><label for="math_checkbox">Mathematics</label> </li>
-     <li> <input id="number_checkbox" type="checkbox"><label for="number_checkbox">Numbers</label> </li>
-     <li> <input id="plants_checkbox" type="checkbox"><label for="plants_checkbox">Plants</label> </li>
-     <li> <input id="sci_checkbox" type="checkbox"><label for="sci_checkbox">Science</label> </li>
-     <li> <input id="none_checkbox" type="checkbox"><label for="none_checkbox">None</label> </li>
-      </ul>
-    </div>
-
-    <div class="large-8 columns">
-      <label>English Definition
-        <textarea placeholder="Please write the English Definition here. Leave blank if you do not know."></textarea>
-      </label>
-    </div>
-
-    <div class="large-8 columns">
-      <label>Kenyan Definition
-        <textarea placeholder="Please write the Kenyan Definition here. Leave blank if you do not know."></textarea>
-      </label>
-    </div>
-
-        <div class="large-8 columns">
-      <label>Notes
-        <textarea placeholder="Please write any notes here. Leave blank if you do not have any."></textarea>
-      </label>
-    </div>
-  </div>
-</form>
-          </div>
-        </div>
-      </article>
- 
-      <hr />
 
 
-  </div>
  
     <!-- End Main Content -->
 
